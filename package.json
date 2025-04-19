@@ -1,0 +1,37 @@
+{
+    "name": "@umerx/btreejs",
+    "private": false,
+    "version": "4.0.1",
+    "description": "Simple B Tree Implementation",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
+    "type": "module",
+    "files": [
+        "dist"
+    ],
+    "scripts": {
+        "build": "tsc",
+        "test": "mocha"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/umerx-github/btreejs.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/umerx-github/btreejs/issues"
+    },
+    "homepage": "https://github.com/umerx-github/btreejs#readme",
+    "devDependencies": {
+        "@types/chai": "^4.3.5",
+        "@types/mocha": "^10.0.1",
+        "@types/node": "^20.17.19",
+        "chai": "^4.3.7",
+        "concurrently": "^9.1.2",
+        "mocha": "^10.2.0",
+        "nodemon": "^2.0.22",
+        "ts-node": "^10.9.1",
+        "typescript": "^5.7.3"
+    }
+}
