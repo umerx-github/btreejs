@@ -25,18 +25,18 @@ export class BTreeNode<T>
         return i;
     }
 
-    toSerializable(): BTreeNodeSerializableInterface<T> {
+    toJSON(): BTreeNodeSerializableInterface<T> {
         return {
             isLeaf: this.isLeaf,
             keys: this.keys,
-            children: this.children.map((child) => child.toSerializable()),
+            children: this.children.map((child) => child.toJSON()),
         };
     }
 
-    static fromSerializable<T>(json: BTreeNodeSerializableInterface<T>) {
+    static fromJSON<T>(json: BTreeNodeSerializableInterface<T>) {
         const node = new BTreeNode<T>(json.isLeaf);
         node.keys = json.keys;
-        node.children = json.children.map(BTreeNode.fromSerializable<T>);
+        node.children = json.children.map(BTreeNode.fromJSON<T>);
         return node;
     }
 }
@@ -125,16 +125,16 @@ export class BTree<T>
         parent.keys.splice(i, 0, midKey);
     }
 
-    toSerializable() {
+    toJSON() {
         return {
             t: this.t,
-            root: this.root.toSerializable(),
+            root: this.root.toJSON(),
         };
     }
 
-    static fromSerializable<T>(json: BTreeSerializableInterface<T>) {
+    static fromJSON<T>(json: BTreeSerializableInterface<T>) {
         const tree = new BTree<T>(json.t);
-        tree.root = BTreeNode.fromSerializable<T>(json.root);
+        tree.root = BTreeNode.fromJSON<T>(json.root);
         return tree;
     }
 }

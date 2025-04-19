@@ -9,11 +9,12 @@ export interface BTreeNodeSerializableInterface<T> {
 }
 export interface BTreeNodeInterface<T> {
     findIndex(key: T): number;
-    toSerializable(): BTreeNodeSerializableInterface<T>;
+    toJSON(): BTreeNodeSerializableInterface<T>;
 }
 
 export interface BTreeInterface<T> {
     search(node: BTreeNodeInterface<T>, key: T): boolean;
     contains(key: T): boolean;
     insert(key: T): void;
+    toJSON(): BTreeSerializableInterface<T>;
 }
