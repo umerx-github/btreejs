@@ -27,9 +27,11 @@ pipeline {
                 branch 'main';
             }
             agent {
-                docker {
-                    image 'mcr.microsoft.com/devcontainers/typescript-node:1-20-bullseye'
-                    args "-u root --entrypoint ''"
+                dockerfile {
+                    dir 'dockerfiles/build'
+                    filename 'Dockerfile'
+                    additionalBuildArgs '--build-arg UID=$(id -u) --build-arg GID=$(id -g)'
+                    args "--entrypoint ''"
                 }
             }
             steps {
