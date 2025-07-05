@@ -51,6 +51,24 @@ export class BTree<T>
         this.root = new BTreeNode<T>(true);
     }
 
+    searchAndFetch(node: BTreeNode<T>, key: T): T | undefined {
+        let i = node.findIndex(key);
+
+        if (i < node.keys.length && node.keys[i] === key) {
+            return node.keys[i];
+        }
+
+        if (node.isLeaf) {
+            return undefined;
+        }
+
+        return this.searchAndFetch(node.children[i], key);
+    }
+
+    fetch(key: T) {
+        return this.searchAndFetch(this.root, key);
+    }
+
     search(node: BTreeNode<T>, key: T): boolean {
         let i = node.findIndex(key);
 

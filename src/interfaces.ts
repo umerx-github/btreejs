@@ -17,4 +17,6 @@ export interface BTreeInterface<T> {
     contains(key: T): boolean;
     insert(key: T): void;
     toJSON(): BTreeSerializableInterface<T>;
+    searchAndFetch(node: BTreeNodeInterface<T>, key: T): T | undefined;
+    fetch(key: T): T | undefined;
 }
